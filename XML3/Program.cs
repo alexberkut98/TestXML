@@ -11,7 +11,7 @@ namespace XML3
 
         static void Main(string[] args)
         {
-            String URLString = "https://raw.githubusercontent.com/palnikovms/DataForTestingTask/master/tree.xml ";
+            string URLString = "https://raw.githubusercontent.com/palnikovms/DataForTestingTask/master/tree.xml";
             XmlTextReader reader = new XmlTextReader(URLString);
 
             //Первичный список всех узлов (с их атрибутивами), который уже потом будет превращаться в дерево

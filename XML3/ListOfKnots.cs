@@ -79,13 +79,34 @@ namespace XML3
                             break;
                     }
 
-                        if (current.GetDepth() == current2.GetDepth())
+                    if (current.GetDepth() == current2.GetDepth())
+                    {
+                        Name = current2.GetName();
+                        if (Name[0] != '/')
                         {
                             list.Add(current2.GetName(), current2.GetDepth(), depth);
                             current = current2;
                             current2 = current2.Next;
                         }
-
+                        else
+                        {
+                            while (Name[0] == '/')
+                            {
+                                current2 = current2.Next;
+                                if (current2 == null)
+                                    break;
+                                Name = current2.GetName();
+                            }
+                            if (current2 != null)
+                            {
+                                while (current.GetDepth() != current2.GetDepth())
+                                    current = current.Prev;
+                                depth = current.GetDepth();
+                            }
+                            else
+                                break;
+                        }
+                    }
                 }
             }
         }
